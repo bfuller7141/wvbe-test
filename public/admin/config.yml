@@ -1,0 +1,24 @@
+backend:
+  name: git-gateway
+  repo: bfuller7141/wvbe-test
+  branch: main
+  api_root: https://gitlab.com/api/v4
+
+media_folder: static/images
+public_folder: /images
+
+collections:
+  - name: 'posts'
+    label: 'Posts'
+    folder: 'content/posts'
+    identifier_field: 'title'
+    extension: 'md'
+    create: false
+    delete: false
+    slug: '{{slug}}'
+    fields:
+      - hint: 'The title of the post'
+        label: 'Title'
+        name: 'title'
+        widget: 'string'
+        required: true
