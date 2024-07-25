@@ -13,8 +13,8 @@ collections:
     folder: 'content/posts'
     identifier_field: 'title'
     extension: 'md'
-    create: false
-    delete: false
+    create: true
+    delete: true
     slug: '{{slug}}'
     fields:
       - hint: 'The title of the post'
