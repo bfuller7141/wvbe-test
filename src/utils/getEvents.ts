@@ -2,7 +2,7 @@ import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
 
-const eventsDirectory = path.join(process.cwd(), 'content/events');
+const eventsDirectory = path.join(process.cwd(), 'src/content/events');
 
 export function getEvents() {
   const files = fs.readdirSync(eventsDirectory);
