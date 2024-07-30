@@ -1,0 +1,38 @@
+---
+// src/components/CategoryTag.astro
+
+import categoryStyles from '../utils/categoryStyles';
+
+export interface CategoryTagProps {
+  category: string;
+}
+
+const { category } = Astro.props as CategoryTagProps;
+const { boxColor, textColor, icon } = categoryStyles[category] || { boxColor: '#e5e7eb', textColor: 'text-gray-700', icon: '' };
+---
+
+<div class="tag" style={`background-color: ${boxColor}; border-color: ${textColor}`}>
+  <img src={icon} alt={`${category} icon`} class="icon-tag"/>
+  <span class={`${textColor}`}>{category}</span>
+</div>
+
+<style>
+  .tag {
+    display: inline-flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 5px 10px;
+    border-radius: 0.25rem;
+    font-family: 'Work Sans', sans-serif;
+    font-weight: 600;
+    line-height: 1;
+    font-size: 1rem;
+  }
+  .icon-tag {
+    width: 1.25rem;
+    height: 1.25rem;
+    margin-right: 0.5rem;
+    display: inline-flex;
+    align-items: center;
+  }
+</style>

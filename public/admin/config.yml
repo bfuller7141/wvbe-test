@@ -8,17 +8,28 @@ media_folder: static/images
 public_folder: /images
 
 collections:
-  - name: 'posts'
-    label: 'Posts'
-    folder: 'content/posts'
-    identifier_field: 'title'
-    extension: 'md'
+  - name: 'events'
+    label: 'Events'
+    folder: 'content/events'
     create: true
-    delete: true
-    slug: '{{slug}}'
     fields:
-      - hint: 'The title of the post'
-        label: 'Title'
-        name: 'title'
+      - name: 'title'
+        label: 'Event Name'
         widget: 'string'
+        hint: ' Name of the event'
         required: true
+        - { label: "Event Image", name: "image", widget: "image", required: true }
+        - { label: "Event Category", name: "category", widget: "relation", collection: "categories", search_fields: ["title"], value_field: "title", display_fields: ["title"], required: true }
+        - { label: "Event Title", name: "title", widget: "string", required: true }
+        - { label: "Event Date", name: "date", widget: "datetime", required: true }
+        - { label: "Event Time", name: "time", widget: "string", required: true }
+        - { label: "Event Location", name: "location", widget: "string", required: true }
+        - { label: "Event Price", name: "price", widget: "string", required: true }
+        - { label: "Event Link", name: "link", widget: "string", required: true }
+  -name: 'categories'
+    label: 'Categories'
+    folder: 'content/categories'
+    create: true
+    fields:
+      - { label: "Category Title", name: "title", widget: "string", required: true }
+

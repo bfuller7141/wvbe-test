@@ -2,7 +2,9 @@
 import BaseHead from '../components/BaseHead.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import EventCard from '../components/EventCard.astro';
 import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
+import FeaturedEvents from 'src/components/FeaturedEvents.astro';
 ---
 
 <!doctype html>
@@ -13,6 +15,17 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 	</head>
 	<body>
 		<Header />
+		<EventCard
+			image="public/paul-van-cotthem-gQZTOtbD2Js-unsplash-Recovered.png"
+			category="Online"
+			title="Concert in the Park"
+			date="2022-08-01"
+			time="7:00 PM"
+			location="Central Park"
+			price="Free"
+			link="https://tripassdesign.com/assets/images/beb-branding_7.webp"
+			/>
+		<FeaturedEvents />
 		<main>
 			<h1>🧑‍🚀 Hello, Astronaut!</h1>
 			<p>

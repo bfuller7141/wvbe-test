@@ -1,0 +1,23 @@
+---
+// src/components/FeaturedEvents.astro
+
+import EventCard from './EventCard.astro';
+import { getUpcomingEvents } from '../utils/cms';
+
+const events = getUpcomingEvents(3); // Fetch 3 upcoming events from the markdown files
+---
+
+<div class="featured-events-grid">
+  {events.map((event: { [key: string]: any; }, index: number) => (
+      <EventCard
+      />
+  ))}
+</div>
+
+<style>
+  .featured-events-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(18.75rem, 1fr));
+    gap: 1.25rem;
+  }
+</style>

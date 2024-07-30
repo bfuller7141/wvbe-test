@@ -1,0 +1,74 @@
+---
+import CategoryTag from './CategoryTag.astro';
+
+export interface EventProps {
+    image: string;
+    category: string;
+    title: string;
+    date: string;
+    time: string;
+    location: string;
+    price: string;
+    link: string;
+}
+
+const {image, category, title, date, time, location, price, link} = Astro.props as EventProps;
+
+//Date format
+const formattedDate = new Date(date).toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+---
+
+<div class="card">
+  <img src={image} alt={title} class="card-image" loading="lazy"/>
+  <div class="content-wrapper">
+    <CategoryTag category={category} />
+    <h3 class="title-small">{title}</h3>
+    <div class="title-xsmall">{formattedDate} • {time}</div>
+    <div class="text-standard">{location} • {price}</div>
+    <a href={link} class="button-text">
+      <div>Attend Event</div>
+      <div class="icon-arrow"><svg id="Group_71" data-name="Group 71" xmlns="http://www.w3.org/2000/svg" height="14" viewBox="0 0 20 12">
+        <defs>
+          <clippath id="clip-path">
+            <rect id="Rectangle_126" data-name="Rectangle 126" height="12" fill="#2d3750"></rect>
+          </clippath>
+        </defs>
+        <g id="Group_71-2" data-name="Group 71">
+          <path id="Path_159" data-name="Path 159" d="M.821,7.769h8.8v3.257a.983.983,0,0,0,1.513.821L18.848,6.82a.982.982,0,0,0,0-1.641L11.13.153A.987.987,0,0,0,9.617.973V4.23H.821A.81.81,0,0,0,0,5.051v1.9a.81.81,0,0,0,.821.821" transform="translate(0 0)" fill="#2d3750"></path>
+        </g>
+      </svg></div>
+    </a>
+  </div>
+</div>
+
+<style>
+  .card {
+  display: inline-flex;
+  min-width: 18.75rem;
+  max-width: 25rem;
+  padding-top: 1rem;
+  padding-right: 1rem;
+  padding-bottom: 1rem;
+  padding-left: 1rem;
+  flex-direction: column;
+  justify-content: center;
+  flex-wrap: nowrap;
+  align-items: flex-start;
+  border-top-left-radius: 0.75rem;
+  border-top-right-radius: 0.75rem;
+  border-bottom-left-radius: 0.75rem;
+  border-bottom-right-radius: 0.75rem;
+  background-color: white;
+  box-shadow: 3px 3px 6px 1px rgba(45, 55, 80, 0.05);
+},
+.card-image {
+  min-width: 100%;
+  margin-bottom: 0.5rem;
+  aspect-ratio: 16/9;
+  border-top-left-radius: 0.25rem;
+  border-top-right-radius: 0.25rem;
+  border-bottom-left-radius: 0.25rem;
+  border-bottom-right-radius: 0.25rem;
+  object-fit: cover;
+}
+</style>
