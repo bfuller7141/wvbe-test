@@ -32,4 +32,3 @@ collections:
     create: true
     fields:
       - { label: "Category Title", name: "title", widget: "string", required: true }
-
