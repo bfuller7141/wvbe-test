@@ -5,6 +5,11 @@ import matter from 'gray-matter';
 const eventsDirectory = path.join(process.cwd(), 'src/content/events');
 
 export function getEvents() {
+  if (!fs.existsSync(eventsDirectory)) {
+    console.warn(`Events directory does not exist: ${eventsDirectory}`);
+    return [];
+  }
+
   const files = fs.readdirSync(eventsDirectory);
   const events = files.map(fileName => {
     const fullPath = path.join(eventsDirectory, fileName);
