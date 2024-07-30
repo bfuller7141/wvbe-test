@@ -2,15 +2,33 @@
 // src/components/FeaturedEvents.astro
 
 import EventCard from './EventCard.astro';
-import { getUpcomingEvents } from '../utils/cms';
 
-const events = getUpcomingEvents(3); // Fetch 3 upcoming events from the markdown files
+export interface EventProps {
+  image: string;
+  category: string;
+  title: string;
+  date: string;
+  time: string;
+  location: string;
+  price: string;
+  link: string;
+}
+
+const { events } = Astro.props;
 ---
 
 <div class="featured-events-grid">
-  {events.map((event: { [key: string]: any; }, index: number) => (
-      <EventCard
-      />
+  {events.map((event: EventProps) => (
+    <EventCard 
+      image={event.image}
+      category={event.category}
+      title={event.title}
+      date={event.date}
+      time={event.time}
+      location={event.location}
+      price={event.price}
+      link={event.link}
+    />
   ))}
 </div>
 
